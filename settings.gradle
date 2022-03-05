@@ -16,3 +16,4 @@ rootProject.name = "RickAndMoryFeed"
 include ':app'
 include ':feedPresentation'
 include ':feedDomain'
+include ':feedData'
