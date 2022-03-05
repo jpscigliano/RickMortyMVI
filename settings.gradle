@@ -5,16 +5,31 @@ pluginManagement {
         mavenCentral()
     }
 }
+enableFeaturePreview('VERSION_CATALOGS')
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        libs {
+            //Navigation
+            version('navigation', '2.4.1')
+            alias('navigation-fragment').to( 'androidx.navigation', 'navigation-fragment').versionRef('navigation')
+            alias('navigation-ui').to( 'androidx.navigation', 'navigation-ui').versionRef('navigation')
+        }
+    }
+
 }
 rootProject.name = "RickAndMoryFeed"
 include ':app'
+
 include ':feedPresentation'
+project(':feedPresentation').projectDir = new File(rootDir, 'featureFeed/feedPresentation')
 include ':feedDomain'
+project(':feedDomain').projectDir = new File(rootDir, 'featureFeed/feedDomain')
 include ':feedData'
+project(':feedData').projectDir = new File(rootDir, 'featureFeed/feedData')
 include ':feedFramework'
+project(':feedFramework').projectDir = new File(rootDir, 'featureFeed/feedFramework')
