@@ -31,6 +31,20 @@ android {
 
 dependencies {
 
+    implementation project(':coreX:framework')
+    implementation project(':coreX:domain')
+    implementation project(':coreX:data')
+
+    implementation project(':featureFeed:feedDomain')
+    implementation project(':featureFeed:feedData')
+
+    //Kotlin
+    implementation libs.kotlin.coroutines
+    implementation libs.kotlin.serialization
+
+    //Retrofit
+    implementation libs.retrofit
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
