@@ -14,22 +14,34 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         libs {
+            //Kotlin core
+            version('kotlinx-core', '1.6.0')
+            alias('kotlin-coroutines').to('org.jetbrains.kotlinx', 'kotlinx-coroutines-core').versionRef('kotlinx-core')
+
+            version('kotlinx-serialization', '1.3.2')
+            alias('kotlin-serialization').to('org.jetbrains.kotlinx', 'kotlinx-serialization-json').versionRef('kotlinx-serialization')
+
+
             //Navigation
             version('navigation', '2.4.1')
-            alias('navigation-fragment').to( 'androidx.navigation', 'navigation-fragment').versionRef('navigation')
-            alias('navigation-ui').to( 'androidx.navigation', 'navigation-ui').versionRef('navigation')
-        }
+            alias('navigation-fragment').to('androidx.navigation', 'navigation-fragment').versionRef('navigation')
+            alias('navigation-ui').to('androidx.navigation', 'navigation-ui').versionRef('navigation')
+
+            //Networking
+            version('retrofit', '2.9.0')
+            alias('retrofit').to('com.squareup.retrofit2', 'retrofit').versionRef('retrofit')
+
+           }
     }
 
 }
 rootProject.name = "RickAndMoryFeed"
 include ':app'
 
-include ':feedPresentation'
-project(':feedPresentation').projectDir = new File(rootDir, 'featureFeed/feedPresentation')
-include ':feedDomain'
-project(':feedDomain').projectDir = new File(rootDir, 'featureFeed/feedDomain')
-include ':feedData'
-project(':feedData').projectDir = new File(rootDir, 'featureFeed/feedData')
-include ':feedFramework'
-project(':feedFramework').projectDir = new File(rootDir, 'featureFeed/feedFramework')
+include ':featureFeed:feedPresentation'
+include ':featureFeed:feedData'
+include ':featureFeed:feedDomain'
+include ':featureFeed:feedFramework'
+include ':coreX:data'
+include ':coreX:domain'
+include ':coreX:framework'
