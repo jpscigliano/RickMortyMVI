@@ -12,10 +12,14 @@ value class Name(private val value: String) {
 
   companion object {
     @Throws(IllegalArgumentException::class)
-    operator fun invoke(value: String?): Name {
-      requireNotNull(value) { "Name cannot be null" }
-      return Name(value)
-    }
+    operator fun invoke(value: String?): Name? {
+      return try {
+        requireNotNull(value) { "Name cannot be null" }
+        Name(value)
+      } catch (e: IllegalArgumentException) {
+        null
+      }
+     }
   }
 }
 

@@ -1,7 +1,6 @@
 package com.testme.feeddomain.model
 
 import java.net.URL
-import kotlin.jvm.Throws
 
 @JvmInline
 value class ImageUrl(private val value: String) {

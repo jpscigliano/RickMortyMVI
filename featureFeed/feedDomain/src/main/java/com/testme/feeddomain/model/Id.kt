@@ -1,7 +1,5 @@
 package com.testme.feeddomain.model
 
-import kotlin.jvm.Throws
-
 @JvmInline
 value class Id(private val value: Int) {
   init {
