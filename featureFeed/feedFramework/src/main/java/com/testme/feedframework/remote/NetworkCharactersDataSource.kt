@@ -11,8 +11,11 @@ import com.testme.feedframework.remote.rest.mapper.PagedResponseDtoToPagedDataMa
 import com.testme.framework.datasource.RemoteDataSource
 import com.testme.framework.mapper.Mapper
 import com.testme.framework.mapper.toList
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class NetworkCharactersDataSource(
+@Singleton
+internal class NetworkCharactersDataSource @Inject constructor(
   private val charactersApi: CharactersApi,
   private val characterResponseDtoToCharacterModelMapper: Mapper<CharacterResponseDto, Character>
 ) : CharactersDataSource {
