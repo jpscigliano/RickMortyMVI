@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         libs {
-            //Kotlin core
+            //Kotlin
             version('kotlinx-core', '1.6.0')
             alias('kotlin-coroutines').to('org.jetbrains.kotlinx', 'kotlinx-coroutines-core').versionRef('kotlinx-core')
 
@@ -27,11 +27,33 @@ dependencyResolutionManagement {
             alias('navigation-fragment').to('androidx.navigation', 'navigation-fragment').versionRef('navigation')
             alias('navigation-ui').to('androidx.navigation', 'navigation-ui').versionRef('navigation')
 
+            //Compose
+            version('compose', '1.2.0')
+
+            //DI
+            version('hilt', '2.41')
+            alias('hilt-android').to('com.google.dagger', 'hilt-android').versionRef('hilt')
+            alias('hilt-core').to('com.google.dagger', 'hilt-core').versionRef('hilt')
+            alias('hilt-compiler').to('com.google.dagger', 'hilt-compiler').versionRef('hilt')
+
             //Networking
             version('retrofit', '2.9.0')
             alias('retrofit').to('com.squareup.retrofit2', 'retrofit').versionRef('retrofit')
 
-           }
+            //Database
+            version('room', '2.4.2')
+            alias('room-runtime').to('androidx.room','room-runtime').versionRef('room')
+            alias('room-compiler').to('androidx.room','room-compiler').versionRef('room')
+            alias('room-ktx').to('androidx.room','room-ktx').versionRef('room')
+
+            //UI
+            version('sliding-pane', '1.2.0')
+            alias('ui-slidingpane').to('androidx.slidingpanelayout', 'slidingpanelayout').versionRef('sliding-pane')
+
+            version('material', '1.5.0')
+            alias('ui-material').to('com.google.android.material', 'material').versionRef('material')
+
+        }
     }
 
 }
@@ -42,6 +64,8 @@ include ':featureFeed:feedPresentation'
 include ':featureFeed:feedData'
 include ':featureFeed:feedDomain'
 include ':featureFeed:feedFramework'
+
 include ':coreX:data'
 include ':coreX:domain'
 include ':coreX:framework'
+include ':coreX:presentation'
