@@ -9,8 +9,11 @@ import com.testme.feeddomain.model.Character
 import com.testme.feeddomain.model.Id
 import com.testme.feeddomain.repository.FeedRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CharactersRepositoryImpl(
+@Singleton
+internal class CharactersRepositoryImpl @Inject constructor(
   private val networkCharactersDataSource: CharactersDataSource,
   private val localCharactersDataSource: LocalCharactersDataSource,
   private val cacheControl: CacheControl
@@ -34,4 +37,5 @@ class CharactersRepositoryImpl(
 
   override suspend fun getCharacterById(characterId: Id): Flow<DataSourceResult<Character>> =
     feedResourceProvider.queryByKey(characterId, Unit, false)
+
 }
