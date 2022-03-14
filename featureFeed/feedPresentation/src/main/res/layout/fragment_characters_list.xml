@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.slidingpanelayout.widget.SlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/sliding_pane_layout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/list_pane"
+    android:layout_width="280dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start" />
+
+  <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/detail_container"
+    android:name="com.testme.feedpresentation.characterDetail.CharacterDetailFragment"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="#ff333333"
+    android:elevation="1dp" />
+</androidx.slidingpanelayout.widget.SlidingPaneLayout>

@@ -6,7 +6,17 @@
   app:startDestination="@id/fragmentList">
 
   <fragment
-    tools:layout="@layout/fragment_list"
     android:id="@+id/fragmentList"
-    android:name="com.testme.feedpresentation.characterList.ListFragment"/>
+    android:name="com.testme.feedpresentation.characterList.ListFragment"
+    tools:layout="@layout/fragment_characters_list">
+    <action android:id="@+id/actionCharactersListToCharacterDetail"
+      app:destination="@+id/fragmentCharacterDetail"
+      />
+  </fragment>
+
+
+  <fragment
+    android:id="@+id/fragmentCharacterDetail"
+    android:name="com.testme.feedpresentation.characterDetail.CharacterDetailFragment"
+    tools:layout="@layout/fragment_character_detail" />
 </navigation>
