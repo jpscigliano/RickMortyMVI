@@ -11,33 +11,43 @@ import kotlinx.coroutines.flow.*
  * [localFetch] - Makes an async call (e.g. network call), returns the result wrapped in a [DataSourceResult]
  * [localStore] - Saves the response of [remoteFetch] as new cache data
  * [localDelete] - query to be execute to clean the cache.
- * [refreshControl] - Mechanism to handle the expiration of cache.
+ * [cacheController] - Mechanism to handle the expiration of cache.
  */
 internal class ResourceProvider<in Input, out Output>(
   private val remoteFetch: suspend (Input) -> DataSourceResult<Output>,
   private val localFetch: suspend (Input) -> Flow<DataSourceResult<Output>>,
   private val localStore: suspend (Output) -> Unit,
   private val localDelete: suspend () -> Unit,
-  private val refreshControl: CacheControl
-) : CacheCleaner, CacheControl by refreshControl {
+  private val cacheController: CacheControl
+) : CacheCleaner, CacheControl by cacheController {
 
   init {
-    refreshControl.addCacheCleaner(this)
+    cacheController.addCacheCleaner(this)
+  }
+
+  fun x() {
   }
 
   // Public API
   suspend fun query(args: Input, force: Boolean = false): Flow<DataSourceResult<Output>> = flow {
 
-    //Emit from Cache only once.
-    fetchFromLocal(args)?.firstOrNull()?.run { emit(this) }
-
-    //Execute remote call if cache is expired or if the update is forced.
-    if (refreshControl.isExpired() || force) {
-      fetchFromRemote(args)?.run { emit(this) }
+    if (cacheController.isExpired() || force) {
+      //1. Emit from Cache.  Only once at the beginig of the flow.
+      fetchFromLocal(args)?.firstOrNull()?.run { emit(this) }
+      //2. Emit InProgress, since api cal will be executed.
+      emit(DataSourceResult.InProgress())
+      val remoteResponse = fetchFromRemoteAndStoreInLocal(args)
+      if (remoteResponse !is DataSourceResult.Success) {
+        //3. Emit Errors or No internet.
+        remoteResponse?.run { emit(this) }
+      } else {
+        //4. Keep emitting.
+        fetchFromLocal(args)?.run { emitAll(this) }
+      }
+    } else {
+      //Keep listening to cache in case an external mechanism updated it.
+      fetchFromLocal(args)?.run { emitAll(this) }
     }
-
-    //Keep listening to cache in case an external mechanism updated it.
-    fetchFromLocal(args)?.distinctUntilChanged()?.run { emitAll(this) }
 
   }
 
@@ -47,7 +57,7 @@ internal class ResourceProvider<in Input, out Output>(
   }
 
   //Private API
-  private suspend fun deleteLocal() = runCatching {
+  private suspend fun deleteLocal(): Unit? = runCatching {
     localDelete()
   }.getOrNull()
 
@@ -56,15 +66,21 @@ internal class ResourceProvider<in Input, out Output>(
     localFetch(args)
   }.getOrNull()
 
-  private suspend fun fetchFromRemote(args: Input): DataSourceResult<Output>? = runCatching {
+  /**
+   * Executes the remote API call and if a Success response with data is retrieve then store in localDB
+   * Accepts [Input] as arguments.
+   *
+   */
+
+  private suspend fun fetchFromRemoteAndStoreInLocal(args: Input): DataSourceResult<Output>? = runCatching {
     remoteFetch(args)
   }.getOrNull()?.also { dataSourceResult ->
     runCatching {
       if (dataSourceResult is DataSourceResult.Success) {
-        localStore(dataSourceResult.data)
-        refreshControl.refresh()
+        if (dataSourceResult.data != null)
+          localStore(dataSourceResult.data!!)
+        cacheController.refresh()
       }
-
     }
   }
 }
