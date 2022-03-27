@@ -46,12 +46,20 @@ dependencyResolutionManagement {
             alias('room-compiler').to('androidx.room','room-compiler').versionRef('room')
             alias('room-ktx').to('androidx.room','room-ktx').versionRef('room')
 
-            //UI
+            version('material', '1.5.0')
+            alias('ui-material').to('com.google.android.material', 'material').versionRef('material')
+
+            //Android
+            version('fragment', '1.4.1')
+            alias('fragment').to('androidx.fragment', 'fragment-ktx').versionRef('fragment')
+
+            version('lifecycle', '2.4.0')
+            alias('lifecycle-viewmodel').to('androidx.lifecycle', 'lifecycle-viewmodel-ktx').versionRef('lifecycle')
+            alias('lifecycle-runtime').to('androidx.lifecycle', 'lifecycle-runtime-ktx').versionRef('lifecycle')
+
             version('sliding-pane', '1.2.0')
             alias('ui-slidingpane').to('androidx.slidingpanelayout', 'slidingpanelayout').versionRef('sliding-pane')
 
-            version('material', '1.5.0')
-            alias('ui-material').to('com.google.android.material', 'material').versionRef('material')
 
         }
     }
