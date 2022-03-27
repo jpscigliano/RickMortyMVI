@@ -4,7 +4,7 @@ import com.testme.data.cache.CacheControl
 import com.testme.domain.DataSourceResult
 import kotlinx.coroutines.flow.Flow
 
-class GroupResourceProvider<in Input, in Key, out Output>(
+class GroupResourceProvider<in Input, in Key, Output>(
   remoteGroupFetch: suspend (Input) -> DataSourceResult<List<Output>>,
   localGroupFetch: suspend (Input) -> Flow<DataSourceResult<List<Output>>>,
   localGroupStore: suspend (List<Output>) -> Unit,
@@ -42,7 +42,7 @@ class GroupResourceProvider<in Input, in Key, out Output>(
       { remoteFetch(key, it) },
       { localFetch(key, it) },
       { localStore(it) },
-      { }, // Delete will be triggered by parent
+      { },
       cacheControl.createChild()
     ).also { resourceMap[key] = it }
 }
