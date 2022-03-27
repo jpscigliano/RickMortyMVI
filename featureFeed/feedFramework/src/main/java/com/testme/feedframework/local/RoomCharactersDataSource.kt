@@ -7,8 +7,8 @@ import com.testme.feeddomain.model.Id
 import com.testme.feedframework.local.room.dao.CharactersDao
 import com.testme.feedframework.local.room.entity.CharacterEntity
 import com.testme.framework.datasource.LocalDataSource
-import com.testme.framework.mapper.Mapper
-import com.testme.framework.mapper.toList
+import com.testme.domain.mapper.Mapper
+import com.testme.domain.mapper.toList
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -2,7 +2,7 @@ package com.testme.feedframework.remote.rest.mapper
 
 import com.testme.feeddomain.model.*
 import com.testme.feedframework.remote.rest.dto.CharacterResponseDto
-import com.testme.framework.mapper.Mapper
+import com.testme.domain.mapper.Mapper
 import javax.inject.Inject
 
 class CharacterResponseDtoToCharacterMapper @Inject constructor(

@@ -2,7 +2,7 @@ package com.testme.feedframework.local.room.mapper
 
 import com.testme.feeddomain.model.*
 import com.testme.feedframework.local.room.entity.CharacterEntity
-import com.testme.framework.mapper.Mapper
+import com.testme.domain.mapper.Mapper
 import javax.inject.Inject
 
 class CharacterEntityToModelMapper @Inject constructor() : Mapper<CharacterEntity, Character> {

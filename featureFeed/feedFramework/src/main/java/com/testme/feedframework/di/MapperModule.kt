@@ -10,7 +10,7 @@ import com.testme.feedframework.remote.rest.dto.CharacterResponseDto
 import com.testme.feedframework.remote.rest.mapper.CharacterResponseDtoToCharacterMapper
 import com.testme.feedframework.remote.rest.mapper.GenderResponseDtoToGenderMapper
 import com.testme.feedframework.remote.rest.mapper.StatusResponseDtoToStatusMapper
-import com.testme.framework.mapper.Mapper
+import com.testme.domain.mapper.Mapper
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

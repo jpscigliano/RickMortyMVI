@@ -4,7 +4,7 @@ package com.testme.feedframework.remote.rest.mapper
 import com.testme.feeddomain.model.PagedData
 import com.testme.feeddomain.model.Pagination
 import com.testme.feedframework.remote.rest.dto.PagedDataResponseDto
-import com.testme.framework.mapper.Mapper
+import com.testme.domain.mapper.Mapper
 
 class PagedResponseDtoToPagedDataMapper<PagedDataResponse, DataType>(
   private val dataResponseMapper: Mapper<PagedDataResponse, DataType>

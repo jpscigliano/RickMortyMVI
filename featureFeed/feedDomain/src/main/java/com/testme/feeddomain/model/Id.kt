@@ -10,7 +10,7 @@ value class Id(private val value: Int) {
 
   companion object {
     @Throws(IllegalArgumentException::class)
-    operator fun invoke(value: String?): Id {
+    operator fun invoke(value: Int?): Id {
       requireNotNull(value) { "Id cannot be null" }
       return Id(value)
     }

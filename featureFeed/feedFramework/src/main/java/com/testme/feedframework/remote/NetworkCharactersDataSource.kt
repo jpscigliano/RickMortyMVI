@@ -9,8 +9,8 @@ import com.testme.feedframework.remote.rest.dto.CharacterResponseDto
 import com.testme.feedframework.remote.rest.dto.PagedDataResponseDto
 import com.testme.feedframework.remote.rest.mapper.PagedResponseDtoToPagedDataMapper
 import com.testme.framework.datasource.RemoteDataSource
-import com.testme.framework.mapper.Mapper
-import com.testme.framework.mapper.toList
+import com.testme.domain.mapper.Mapper
+import com.testme.domain.mapper.toList
 import javax.inject.Inject
 import javax.inject.Singleton
 
