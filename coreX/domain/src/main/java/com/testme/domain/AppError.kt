@@ -1,8 +1,7 @@
 package com.testme.domain
 
-sealed interface AppError {
-  object InternetError : AppError
-  object InvalidRequest : AppError
-  object NotFound : AppError
-  object UnknownError : AppError
+sealed class AppError(val message:String) {
+  object InvalidRequest : AppError("Invalid")
+  object NotFound : AppError("Not Found")
+  object UnknownError : AppError("Unknown")
 }
