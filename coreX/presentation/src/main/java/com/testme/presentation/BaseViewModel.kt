@@ -1,11 +1,11 @@
 package com.testme.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.testme.domain.model.*
-import com.testme.feedpresentation.characterList.reducer.Store
+import com.testme.presentation.model.Store
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<EVENT : ViewEvent, STATE : ViewState, EFFECT : Effect, ACTION : Action> :
   ViewModel() {
@@ -29,7 +29,9 @@ abstract class BaseViewModel<EVENT : ViewEvent, STATE : ViewState, EFFECT : Effe
   protected abstract val store: Store<EVENT, STATE, EFFECT, ACTION>
 
   fun dispatchEvent(event: EVENT) {
-    store.accept(event)
+    viewModelScope.launch {
+      store.accept(event)
+    }
   }
 
 

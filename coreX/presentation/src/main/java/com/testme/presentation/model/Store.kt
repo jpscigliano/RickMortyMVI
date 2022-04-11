@@ -1,16 +1,12 @@
-package com.testme.feedpresentation.characterList.reducer
+package com.testme.presentation.model
 
 import com.testme.domain.model.Effect
 import com.testme.domain.model.Action
 import com.testme.domain.model.ViewEvent
 import com.testme.domain.model.ViewState
-import com.testme.feedpresentation.characterList.*
-import com.testme.presentation.model.Actor
-import com.testme.presentation.model.Reducer
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.CONFLATED
 import kotlinx.coroutines.flow.*
-import java.lang.reflect.Array.get
 
 class Store<EVENT : ViewEvent, STATE : ViewState, EFFECT : Effect, ACTION : Action>(
   initialState: STATE,

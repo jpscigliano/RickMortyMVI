@@ -76,8 +76,10 @@ dependencies {
     //Lifecycle
     implementation libs.lifecycle.runtime
     implementation libs.lifecycle.viewmodel
-
     implementation libs.fragment
+
+    //UI
+    implementation libs.ui.slidingpane
 
 
     //implementation 'androidx.core:core-ktx:1.7.0'
