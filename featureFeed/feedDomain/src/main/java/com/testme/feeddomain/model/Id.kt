@@ -1,7 +1,10 @@
 package com.testme.feeddomain.model
 
+
+import java.io.Serializable
+
 @JvmInline
-value class Id(private val value: Int) {
+value class Id(private val value: Int):Serializable {
   init {
     require(value >= 0) { "Id should be bigger than 0" }
   }

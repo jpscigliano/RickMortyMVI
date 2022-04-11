@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
- * Use Case that returns a flow with the corresponsd list of characters.
+ * Use Case that returns a flow with the correspond list of characters.
  */
 internal class GetCharactersListUseCase @Inject constructor(
   private val feedRepository: FeedRepository

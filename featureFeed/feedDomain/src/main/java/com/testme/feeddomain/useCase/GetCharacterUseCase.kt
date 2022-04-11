@@ -11,6 +11,7 @@ import javax.inject.Inject
 internal class GetCharacterUseCase @Inject constructor(
   private val feedRepository: FeedRepository
 ) : FlowUseCase<Id, Character> {
+
   override suspend fun invoke(request: Id): Flow<DataSourceResult<Character>> =
     feedRepository.getCharacterById(request)
 }
