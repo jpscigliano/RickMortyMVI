@@ -5,6 +5,8 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+
 enableFeaturePreview('VERSION_CATALOGS')
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -26,6 +28,7 @@ dependencyResolutionManagement {
             version('navigation', '2.4.1')
             alias('navigation-fragment').to('androidx.navigation', 'navigation-fragment').versionRef('navigation')
             alias('navigation-ui').to('androidx.navigation', 'navigation-ui').versionRef('navigation')
+            alias('navigation-safeargs').to('androidx.navigation', 'navigation-safe-args-gradle-plugin').versionRef('navigation')
 
             //Compose
             version('compose', '1.2.0')
