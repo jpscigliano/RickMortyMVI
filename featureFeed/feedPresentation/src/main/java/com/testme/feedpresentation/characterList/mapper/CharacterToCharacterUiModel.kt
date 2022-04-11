@@ -1,4 +1,4 @@
-package com.testme.feedpresentation.characterDetail.mapper
+package com.testme.feedpresentation.characterList.mapper
 
 import com.testme.domain.mapper.Mapper
 import com.testme.feeddomain.model.Character

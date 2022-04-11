@@ -2,12 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.testme.feedpresentation">
 
-  <application>
-    <activity
-      android:name=".characterDetail.MainActivityCompose"
-      android:exported="false"
-      android:label="@string/title_activity_main_compose"
-      android:theme="@style/Theme.RickAndMoryFeed" />
-  </application>
 
 </manifest>

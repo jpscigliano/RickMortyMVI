@@ -6,7 +6,7 @@ import com.testme.feeddomain.model.Id
 
 sealed class CharactersFeedAction : Action {
   data class SelectingCharacter(val characterID: Id) : CharactersFeedAction()
-  data class CharactersFeedLoaded(val data: List<Character>?) : CharactersFeedAction()
   object LoadingCharactersFeed : CharactersFeedAction()
+  data class CharactersFeedLoaded(val data: List<Character>?) : CharactersFeedAction()
   object FinishLoadingCharactersFeed : CharactersFeedAction()
 }

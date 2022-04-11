@@ -1,5 +1,6 @@
-package com.testme.feedpresentation.characterList.view.viewmodel
+package com.testme.feedpresentation.characterList.view
 
+import androidx.lifecycle.viewModelScope
 import com.testme.domain.FlowUseCase
 import com.testme.feeddomain.model.Character
 import com.testme.feedpresentation.characterList.model.CharactersFeedAction
@@ -9,7 +10,7 @@ import com.testme.feedpresentation.characterList.reducer.CharactersActor
 import com.testme.feedpresentation.characterList.reducer.CharactersReducer
 import com.testme.feedpresentation.characterList.model.CharactersFeedViewState
 
-import com.testme.feedpresentation.characterList.reducer.Store
+import com.testme.presentation.model.Store
 import com.testme.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -18,12 +19,12 @@ import javax.inject.Inject
 class CharactersViewModel @Inject constructor(
   private val getCharactersUseCase: FlowUseCase<Unit, List<Character>>,
   private val charactersReducer: CharactersReducer,
-  ) :
+) :
   BaseViewModel<CharactersFeedViewEvent, CharactersFeedViewState, CharactersFeedEffect, CharactersFeedAction>() {
 
   override val store = Store(
     initialState = CharactersFeedViewState(isLoading = false, characters = listOf(), ""),
-    actor = CharactersActor(getCharactersUseCase),
+    actor = CharactersActor(viewModelScope.coroutineContext, getCharactersUseCase),
     reducer = charactersReducer
   )
 

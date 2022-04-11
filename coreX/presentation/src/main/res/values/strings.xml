@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">presentation</string>
+  <string name="msg_select_character">Please select a character to view the details</string>
+
 </resources>

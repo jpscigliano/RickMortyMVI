@@ -27,7 +27,6 @@ class CharactersReducer @Inject constructor(private val mapper: Mapper<Character
           characters = mapper.toList().map(feedAction.data ?: listOf()),
         )
       )
-
     }
   }
 }
