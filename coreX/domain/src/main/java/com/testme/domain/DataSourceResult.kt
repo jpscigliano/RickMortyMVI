@@ -3,7 +3,7 @@ package com.testme.domain
 sealed interface DataSourceResult<DATA> {
   class InProgress<DATA> : DataSourceResult<DATA>
   class NoInternet<DATA> : DataSourceResult<DATA>
-  data class Error<DATA>(val error: AppError? = null, val data: DATA? = null) :
+  data class Error<DATA>(val error: AppError, val data: DATA? = null) :
     DataSourceResult<DATA>
 
   data class Success<DATA>(val data: DATA?) : DataSourceResult<DATA>
