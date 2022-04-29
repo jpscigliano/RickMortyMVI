@@ -4,7 +4,12 @@ pluginManagement {
         google()
         mavenCentral()
     }
+    plugins{
+        id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+        id 'org.jetbrains.dokka' version '1.6.10'
+    }
 }
+
 
 
 enableFeaturePreview('VERSION_CATALOGS')
@@ -80,3 +85,4 @@ include ':coreX:data'
 include ':coreX:domain'
 include ':coreX:framework'
 include ':coreX:presentation'
+include ':lib'
