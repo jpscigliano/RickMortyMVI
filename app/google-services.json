@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "89013058742",
+    "project_id": "rickfeed-87ccc",
+    "storage_bucket": "rickfeed-87ccc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89013058742:android:55f8e1791b9a82fbe03a17",
+        "android_client_info": {
+          "package_name": "com.testme.rickandmoryfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89013058742-2ifcqgnp3pnkaejcvsj4hqa1qqv6pdpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxio7Q4YFhy2K8tIUM-nsqeWyTQBqX48M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89013058742-2ifcqgnp3pnkaejcvsj4hqa1qqv6pdpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
