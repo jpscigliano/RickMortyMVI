@@ -25,11 +25,11 @@ jobs:
       - name: Upload apk
         uses: actions/upload-artifact@v2
         with:
-          name: debug apk
+          name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Build instrumented Test
-        uses: ./gradlew assembleDebugAndroidTest
+        run: ./gradlew assembleDebugAndroidTest
 
       - name: Upload Android Test
         uses: actions/upload-artifact@v1
