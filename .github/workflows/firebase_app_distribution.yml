@@ -34,9 +34,10 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCLOUD_AUTH }}
 
-      - name: Build & Deploy
-        run: |
-          ./gradlew --stop
-          ./gradlew clean
-          ./gradlew assembleDebug  appDistributionUploadDebug --release-notes "Name of Jira"
+      - name: Build APK
+        run: ./gradlew assembleDebug
 
+      - name: Upload to Firebase
+        run: firebase appdistribution:distribute app-debug.apk  \
+             --app 1:89013058742:android:55f8e1791b9a82fbe03a17  \
+             --release-notes "Bug fixes and improvements"
