@@ -45,5 +45,5 @@ jobs:
         run: |
           ./gradlew --stop
           ./gradlew clean
-          ./gradlew assembleDebug  appDistributionUploadDebug --release-notes "Name of Jira"
+          ./gradlew assembleDebug  appDistributionUploadDebug
 
