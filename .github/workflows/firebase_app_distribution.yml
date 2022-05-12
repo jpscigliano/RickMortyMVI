@@ -29,8 +29,8 @@ jobs:
 
       - name: Update release notes.
         run: |
-          : > app/release_notes_firebase.txt
-          BRANCH_NAME > app/release_notes_firebase.txt
+          echo : > app/release_notes_firebase.txt
+          echo BRANCH_NAME > app/release_notes_firebase.txt
 
 
 
