@@ -30,7 +30,8 @@ jobs:
       - name: Update release notes.
         run: |
           echo : > app/release_notes_firebase.txt
-          echo This build belong to the following feature branch > app/release_notes_firebase.txt
+          echo "Feature: $BRANCH_NAME" > app/release_notes_firebase.txt
+          echo "Feature: "$BRANCH_NAME > app/release_notes_firebase.txt
           echo $BRANCH_NAME > app/release_notes_firebase.txt
 
 
