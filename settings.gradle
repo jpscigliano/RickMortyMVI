@@ -30,10 +30,11 @@ dependencyResolutionManagement {
 
 
             //Navigation
-            version('navigation', '2.4.1')
+            version('navigation', '2.4.2')
             alias('navigation-fragment').to('androidx.navigation', 'navigation-fragment').versionRef('navigation')
             alias('navigation-ui').to('androidx.navigation', 'navigation-ui').versionRef('navigation')
             alias('navigation-safeargs').to('androidx.navigation', 'navigation-safe-args-gradle-plugin').versionRef('navigation')
+            alias('navigation-testing').to('androidx.navigation', 'navigation-testing').versionRef('navigation')
 
             //Compose
             version('compose', '1.2.0')
@@ -43,6 +44,11 @@ dependencyResolutionManagement {
             alias('hilt-android').to('com.google.dagger', 'hilt-android').versionRef('hilt')
             alias('hilt-core').to('com.google.dagger', 'hilt-core').versionRef('hilt')
             alias('hilt-compiler').to('com.google.dagger', 'hilt-compiler').versionRef('hilt')
+
+            alias('hilt-android-testing').to('com.google.dagger', 'hilt-android-testing').versionRef('hilt')
+            alias('hilt-android-compiler').to('com.google.dagger', 'hilt-android-compiler').versionRef('hilt')
+
+
 
             //Networking
             version('retrofit', '2.9.0')

@@ -1,0 +1,31 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  assemble:
+    name: Assemble Apk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v3
+
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
+
+      # Build app & publish apk to firebase
+      - name: Build & Deploy
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GCLOUD_AUTH }}
+          ./gradlew --stop
+          ./gradlew clean
+          ./gradlew assembleDebug  appDistributionUploadDebug
+
