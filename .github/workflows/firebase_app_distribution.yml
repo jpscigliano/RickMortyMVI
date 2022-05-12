@@ -22,9 +22,14 @@ jobs:
           cache: gradle
 
       # Build app & publish apk to firebase
+      - name: Login to Google Cloud
+        id: 'auth'
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCLOUD_AUTH }}
+
       - name: Build & Deploy
         run: |
-          export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GCLOUD_AUTH }}
           ./gradlew --stop
           ./gradlew clean
           ./gradlew assembleDebug  appDistributionUploadDebug
