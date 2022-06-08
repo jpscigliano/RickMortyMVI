@@ -28,7 +28,7 @@ jobs:
       - name: Update release notes with Branch name.
         env:
           BRANCH_NAME: ${{github.head_ref}}
-          DEV_NAME: ${{github.head_ref}}
+          DEV_NAME: ${{github.actor}}
         run: |
           echo : > app/release_notes_firebase.txt
           echo Feature: $BRANCH_NAME > app/release_notes_firebase.txt
