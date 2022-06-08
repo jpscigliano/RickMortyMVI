@@ -11,7 +11,7 @@ jobs:
     name: Assemble Apk
     runs-on: ubuntu-latest
     env:
-      MY_BRANCH_NAME: ${{GITHUB_HEAD_REF}}
+      MY_BRANCH_NAME: ${{github.head_ref}}
     steps:
       - name: Clone Repo
         uses: actions/checkout@v3
