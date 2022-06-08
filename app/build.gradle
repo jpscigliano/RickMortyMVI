@@ -39,7 +39,8 @@ android {
     }
     firebaseAppDistribution {
         appId = "1:89013058742:android:55f8e1791b9a82fbe03a17"
-        releaseNotes = "first test from github actions"
+        releaseNotesFile = "app/release_notes_firebase.txt"
+        group="feature-qa"
     }
 
 
