@@ -24,12 +24,15 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+          # Update release notes with the name of the  branch.
       - name: Update release notes with Branch name.
         env:
           BRANCH_NAME: ${{github.head_ref}}
+          DEV_NAME: ${{github.head_ref}}
         run: |
           echo : > app/release_notes_firebase.txt
           echo Feature: $BRANCH_NAME > app/release_notes_firebase.txt
+          echo Dev: $DEV_NAME > app/release_notes_firebase.txt
 
       # Build app & publish apk to firebase
       - name: Auth to Google Cloud
