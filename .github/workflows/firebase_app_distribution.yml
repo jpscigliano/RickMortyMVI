@@ -30,9 +30,8 @@ jobs:
           BRANCH_NAME: ${{github.head_ref}}
           DEV_NAME: ${{github.actor}}
         run: |
-          echo : > app/release_notes_firebase.txt
           echo Feature: $BRANCH_NAME > app/release_notes_firebase.txt
-          echo Dev: $DEV_NAME > app/release_notes_firebase.txt
+          echo Dev: $DEV_NAME >> app/release_notes_firebase.txt
 
       # Build app & publish apk to firebase
       - name: Auth to Google Cloud
