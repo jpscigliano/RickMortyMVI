@@ -9,6 +9,8 @@ on:
 jobs:
   assemble:
     name: Assemble Apk
+    env:
+      BRANCH_NAME: ${{github.head_ref}}
     runs-on: ubuntu-latest
 
     steps:
@@ -22,12 +24,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Get branch name
+      - name: Update release notes with Branch name.
         env:
           BRANCH_NAME: ${{github.head_ref}}
-        run: echo $BRANCH_NAME
-
-      - name: Update release notes.
         run: |
           echo : > app/release_notes_firebase.txt
           echo Feature: $BRANCH_NAME > app/release_notes_firebase.txt
