@@ -22,7 +22,7 @@ jobs:
           cache: gradle
 
       - name: Get branch name
-        if: github.event_name == 'pull_request'
+        if: false
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
